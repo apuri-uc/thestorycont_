@@ -1,0 +1,144 @@
+<div>
+  <div>
+    <h1>
+      Details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/days">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_day/<%= @the_day.id %>">
+          Delete day
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Day
+      </dt>
+      <dd>
+        <%= @the_day.day %>
+      </dd>
+
+      <dt>
+        Entries
+      </dt>
+      <dd>
+        <%= @the_day.entries %>
+      </dd>
+
+      <dt>
+        G5
+      </dt>
+      <dd>
+        <%= @the_day.g5 %>
+      </dd>
+
+      <dt>
+        Created
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_day.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_day.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit day
+    </h2>
+
+    <form action="/modify_day/<%= @the_day.id %>"  method="post" >
+      <div>
+        <label for="week_id_box">
+          Week
+        </label>
+
+        <input type="text" id="week_id_box" name="query_week_id" value="<%= @the_day.week_id %>">
+      </div>
+
+      <div>
+        <label for="goal_id_box">
+          Goal
+        </label>
+
+        <input type="text" id="goal_id_box" name="query_goal_id" value="<%= @the_day.goal_id %>">
+      </div>
+
+      <div>
+        <label for="entries_box">
+          Entries
+        </label>
+
+        <input type="text" id="entries_box" name="query_entries" value="<%= @the_day.entries %>">
+      </div>
+
+      <div>
+        <label for="day_box">
+          Day
+        </label>
+
+        <input type="text" id="day_box" name="query_day" value="<%= @the_day.day %>">
+      </div>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_day.user_id %>">
+      </div>
+
+      <div>
+        <label for="g1_box">
+          G1
+        </label>
+
+        <input type="text" id="g1_box" name="query_g1" value="<%= @the_day.g1 %>">
+      </div>
+
+      <div>
+        <label for="g2_box">
+          G2
+        </label>
+
+        <input type="text" id="g2_box" name="query_g2" value="<%= @the_day.g2 %>">
+      </div>
+
+      <div>
+        <label for="g3_box">
+          G3
+        </label>
+
+        <input type="text" id="g3_box" name="query_g3" value="<%= @the_day.g3 %>">
+      </div>
+
+      <div>
+        <label for="g4_box">
+          G4
+        </label>
+
+        <input type="text" id="g4_box" name="query_g4" value="<%= @the_day.g4 %>">
+      </div>
+
+      <button>
+        Update day
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

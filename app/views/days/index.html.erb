@@ -1,0 +1,159 @@
+<div>
+  <div>
+  <h1><strong>Week of <%= @start_of_week.strftime('%B %d, %Y') %> to <%= @end_of_week.strftime('%B %d, %Y') %></strong></h1>
+  </div>
+</div>
+
+<hr>
+
+<h2>Goals for the week</h2>
+<div>
+  <div>
+  <a href="/goals">Edit goals</a>
+  <div>
+  Goal 1:
+  </div>
+  <div>
+  Goal 2:
+  </div>
+  <div>
+  Goal 3:
+  </div>
+  </div>
+</div>
+
+<hr>
+
+<h2>What happened <%= @date.strftime('%B %d, %Y') %>?</h2>
+
+<div>
+  <div>
+    <form action="/insert_day" method="post" >
+      <label for="date">
+      Day
+      </label>
+        </label>
+      <input type="text" id="date" name="query_date" value="<%= @date.strftime('%B %d, %Y') %>"> 
+
+      <div>
+      <label for="entry">
+        <span style="font-style: italic"> Add one sentence about something, big or small, that happened today.</span>
+      </div>
+      </label>
+      <textarea id="entry" name="query_entries" rows="3"></textarea>
+      <div>
+
+      <div>
+        <label for="goal1_box">
+          Did you work on Goal 1? <span style="font-style: italic">Yes, No, or N/A</span>
+        </label>
+        <input type="text" id="goal1_box" name="query_g1_workedon">
+      </div>
+
+      <div>
+        <label for="goal2_box">
+          Did you work on Goal 2? <span style="font-style: italic">Yes, No, or N/A</span>
+        </label>
+        <input type="text" id="goal2_box" name="query_g2_workedon">
+      </div>
+
+      <div>
+        <label for="goal3_box">
+          Did you work on Goal 3? <span style="font-style: italic">Yes, No, or N/A</span>
+        </label>
+        <input type="text" id="goal1_box" name="query_g3_workedon">
+      </div>
+
+      <button>
+        Add day
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+
+<h2>Weekly entries</h2>
+
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          Day
+        </th>
+
+        <th>
+          Goal 1
+        </th>
+
+        <th>
+          Worked on today?
+        </th>
+
+        <th>
+          Goal 2
+        </th>
+
+        <th>
+          Worked on today?
+        </th>
+
+        <th>
+          Goal 3
+        </th>
+
+        <th>
+          Worked on today?
+        </th>
+
+        <th>
+         Daily log
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_days.each do |a_day| %>
+      <tr>
+        <td>
+          <%= @date.strftime('%B %d, %Y') %> 
+        </td>
+
+        <td>
+          <%= a_day.g1 %>
+        </td>
+
+        <td>
+         <%= a_day.g1_workedon %> 
+        </td>
+
+        <td>
+         <%= a_day.g2 %> 
+        </td>
+
+        <td>
+         <%= a_day.g2_workedon %> 
+        </td>
+
+        <td>
+          <%= a_day.g3 %> 
+        </td>
+
+        <td>
+         <%= a_day.g3_workedon %> 
+        </td>
+
+        <td>
+          <%= a_day.entries %>
+        </td>
+
+        <td>
+        <a href="/days/:path_id">Show Details</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

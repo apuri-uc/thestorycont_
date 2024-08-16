@@ -10,5 +10,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 0) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_16_074402) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "days", force: :cascade do |t|
+    t.integer "week_id"
+    t.integer "goal_id"
+    t.string "entries"
+    t.string "day"
+    t.integer "user_id"
+    t.string "g1_workedon"
+    t.string "g2_workedon"
+    t.string "g3_workedon"
+    t.string "g5"
+    t.string "g4_workedon"
+    t.string "g5_workedon"
+    t.string "g1"
+    t.string "g2"
+    t.string "g3"
+    t.string "g4"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "day_id"
+    t.integer "user_id"
+    t.string "daily_entry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "g1"
+    t.string "g2"
+    t.string "g3"
+    t.string "g4"
+    t.string "g5"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reflection_questions", force: :cascade do |t|
+    t.string "question"
+    t.integer "day_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
 end

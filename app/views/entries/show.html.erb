@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Entry #<%= @the_entry.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/entries">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_entry/<%= @the_entry.id %>">
+          Delete entry
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Day
+      </dt>
+      <dd>
+        <%= @the_entry.day_id %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_entry.user_id %>
+      </dd>
+
+      <dt>
+        Daily entry
+      </dt>
+      <dd>
+        <%= @the_entry.daily_entry %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_entry.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_entry.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit entry
+    </h2>
+
+    <form action="/modify_entry/<%= @the_entry.id %>"  method="post" >
+      <div>
+        <label for="day_id_box">
+          Day
+        </label>
+
+        <input type="text" id="day_id_box" name="query_day_id" value="<%= @the_entry.day_id %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_entry.user_id %>">
+      </div>
+
+      <div>
+        <label for="daily_entry_box">
+          Daily entry
+        </label>
+
+        <input type="text" id="daily_entry_box" name="query_daily_entry" value="<%= @the_entry.daily_entry %>">
+      </div>
+
+      <button>
+        Update entry
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

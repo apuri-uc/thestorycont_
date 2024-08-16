@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all reflection questions
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new reflection question
+    </h2>
+
+    <form action="/insert_reflection_question" method="post">
+      <div>
+        <label for="question_box">
+          Question
+        </label>
+
+        <input type="text" id="question_box" name="query_question">
+      </div>
+
+      <div>
+        <label for="day_id_box">
+          Day
+        </label>
+
+        <input type="text" id="day_id_box" name="query_day_id">
+      </div>
+
+      <button>
+        Create reflection question
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Question
+        </th>
+
+        <th>
+          Day
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_reflection_questions.each do |a_reflection_question| %>
+      <tr>
+        <td>
+          <%= a_reflection_question.id %>
+        </td>
+
+        <td>
+          <%= a_reflection_question.question %>
+        </td>
+
+        <td>
+          <%= a_reflection_question.day_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_reflection_question.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_reflection_question.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/reflection_questions/<%= a_reflection_question.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

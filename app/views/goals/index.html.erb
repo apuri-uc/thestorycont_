@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Edit goals
+    </h1>
+  </div>
+</div>
+
+<a href="/this_week">Go back</a>
+
+
+<hr>
+
+<div>
+  <form action="/insert_goal" method="post">
+      <div>
+        <label for="goal1_box">
+          Goal 1
+        </label>
+        <input type="text" id="goal1_box" name="query_g1">
+      </div>
+
+      <div>
+        <label for="goal2_box">
+          Goal 2
+        </label>
+        <input type="text" id="goal2_box" name="query_g2">
+      </div>
+
+      <div>
+        <label for="goal3_box">
+          Goal 3
+        </label>
+        <input type="text" id="goal3_box" name="query_g3">
+      </div>
+      <button>Save</button>
+  </form>
+  </div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          Goal 1
+        </th>
+
+        <th>
+          Goal 2
+        </th>
+
+        <th>
+          Goal 3
+        </th>
+
+        <th>
+          Created
+        </th>
+
+        <th>
+          Updated
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_goals.each do |a_goal| %>
+      <tr>
+        <td>
+          <%= a_goal.g1 %>
+        </td>
+
+        <td>
+          <%= a_goal.g2 %>
+        </td>
+
+        <td>
+          <%= a_goal.g3 %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_goal.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_goal.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/goals/<%= a_goal.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

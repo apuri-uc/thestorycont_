@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Reflection question #<%= @the_reflection_question.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/reflection_questions">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_reflection_question/<%= @the_reflection_question.id %>">
+          Delete reflection question
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Question
+      </dt>
+      <dd>
+        <%= @the_reflection_question.question %>
+      </dd>
+
+      <dt>
+        Day
+      </dt>
+      <dd>
+        <%= @the_reflection_question.day_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_reflection_question.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_reflection_question.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit reflection question
+    </h2>
+
+    <form action="/modify_reflection_question/<%= @the_reflection_question.id %>"  method="post" >
+      <div>
+        <label for="question_box">
+          Question
+        </label>
+
+        <input type="text" id="question_box" name="query_question" value="<%= @the_reflection_question.question %>">
+      </div>
+
+      <div>
+        <label for="day_id_box">
+          Day
+        </label>
+
+        <input type="text" id="day_id_box" name="query_day_id" value="<%= @the_reflection_question.day_id %>">
+      </div>
+
+      <button>
+        Update reflection question
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
