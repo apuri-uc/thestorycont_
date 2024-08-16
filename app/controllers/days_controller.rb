@@ -9,6 +9,8 @@ class DaysController < ApplicationController
     @start_of_week = @date.beginning_of_week(:sunday)
     @end_of_week = @start_of_week + 6.days
 
+    @goals = Goal.all
+
     render({ :template => "days/index" })
   end
 

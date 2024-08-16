@@ -12,4 +12,5 @@
 #  updated_at :datetime         not null
 #
 class Goal < ApplicationRecord
+has_many  :days, class_name: "Day", foreign_key: "goal_id", dependent: :destroy
 end

@@ -22,4 +22,6 @@
 #  week_id     :integer
 #
 class Day < ApplicationRecord
+has_many  :logs, class_name: "Entry", foreign_key: "day_id", dependent: :destroy
+has_many  :reflection_questions, class_name: "ReflectionQuestion", foreign_key: "day_id", dependent: :destroy
 end

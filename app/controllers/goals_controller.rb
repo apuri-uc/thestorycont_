@@ -25,9 +25,9 @@ class GoalsController < ApplicationController
 
     if the_goal.valid?
       the_goal.save
-      redirect_to("/goals", { :notice => "Goal created successfully." })
+      redirect_to("/this_week", { :notice => "Goal created successfully." })
     else
-      redirect_to("/goals", { :alert => the_goal.errors.full_messages.to_sentence })
+      redirect_to("/this_week", { :alert => the_goal.errors.full_messages.to_sentence })
     end
   end
 

@@ -9,4 +9,5 @@
 #  day_id     :integer
 #
 class ReflectionQuestion < ApplicationRecord
+belongs_to :day, required: true, class_name: "Day", foreign_key: "day_id"
 end

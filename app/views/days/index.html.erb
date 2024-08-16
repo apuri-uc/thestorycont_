@@ -7,21 +7,20 @@
 <hr>
 
 <h2>Goals for the week</h2>
-<div>
-  <div>
-  Goal 1:  
-  </div>
-  <div>
-  Goal 2:
-  </div>
-  <div>
-  Goal 3:
-  </div>
-  <div>
-  <a href="/goals">Edit goals</a>
-  </div>
-</div>
+  <ul>
+    <% @goals.each do |goal| %>
+      <li>Goal 1:<%= goal.fetch("query_g1") %></li>
+      <li>Goal 2:<%= goal.fetch("query_g2") %></li>
+      <li>Goal 3:<%= goal.fetch("query.g3") %></li>
+    <% end %>
+  </ul>
+</body>
+</html>
 
+<a href="/goals">
+    Edit Goals
+  </a>
+  
 <hr>
 
 <h2>What happened on <%= @date.strftime('%B %d, %Y') %>?</h2>
@@ -47,21 +46,21 @@
       <label for="goal1">
         Goal 1 
       </label>
-      <input type="text" id="goal1" name="query_g1" readonly class="readonly-input" value="@date">
+      <input type="text" id="goal1" name="query_g1" readonly class="readonly-input" value="@g1">
       </div>
 
       <div>
       <label for="goal2">
         Goal 2
       </label>
-      <input type="text" id="goal2" name="query_g2" readonly class="readonly-input" value="@date">
+      <input type="text" id="goal2" name="query_g2" readonly class="readonly-input" value="@g2">
       </div>
 
       <div>
       <label for="goal3">
         Goal 3
       </label>
-      <input type="text" id="goal3" name="query_g3" readonly class="readonly-input" value="@date">
+      <input type="text" id="goal3" name="query_g3" readonly class="readonly-input" value="@g3">
       </div>
 
       <div>
@@ -148,6 +147,7 @@
         </td>
 
         <td>
+
           <%= a_day.g1 %>
         </td>
 
@@ -172,7 +172,7 @@
         </td>
 
         <td>
-        <a href="/days//<%= a_day.id %>">Show Details</a>
+        <a href="/days/<%= a_day.id %>">Show Details</a>
         </td>
       </tr>
       <% end %>
