@@ -19,9 +19,9 @@ class GoalsController < ApplicationController
 
   def create
     the_goal = Goal.new
-    @the_goal.g1 = params.fetch("query_g1")
-    @the_goal.g2 = params.fetch("query_g2")
-    @the_goal.g3 = params.fetch("query_g3")
+    the_goal.g1 = params.fetch("query_g1")
+    the_goal.g2 = params.fetch("query_g2")
+    the_goal.g3 = params.fetch("query_g3")
 
     if the_goal.valid?
       the_goal.save
@@ -41,9 +41,9 @@ class GoalsController < ApplicationController
 
     if the_goal.valid?
       the_goal.save
-      redirect_to("/goals/#{the_goal.id}", { :notice => "Goal updated successfully."} )
+      redirect_to("/goals", { :notice => "Goal updated successfully."} )
     else
-      redirect_to("/goals/#{the_goal.id}", { :alert => the_goal.errors.full_messages.to_sentence })
+      redirect_to("/goals", { :alert => the_goal.errors.full_messages.to_sentence })
     end
   end
 

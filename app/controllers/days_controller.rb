@@ -45,15 +45,12 @@ class DaysController < ApplicationController
     the_day.g1_workedon = params.fetch("query_g1_workedon")
     the_day.g2_workedon = params.fetch("query_g2_workedon")
     the_day.g3_workedon = params.fetch("query_g3_workedon")
-    the_day.g1 = params.fetch("query_g1")
-    the_day.g2 = params.fetch("query_g2")
-    the_day.g3 = params.fetch("query_g3")
 
     if the_day.valid?
       the_day.save
-      redirect_to("/days/#{the_day.id}", { :notice => "Day updated successfully."} )
+      redirect_to("/this_week", { :notice => "Day updated successfully."} )
     else
-      redirect_to("/days/#{the_day.id}", { :alert => the_day.errors.full_messages.to_sentence })
+      redirect_to("/this_week", { :alert => the_day.errors.full_messages.to_sentence })
     end
   end
 
@@ -63,6 +60,6 @@ class DaysController < ApplicationController
 
     the_day.destroy
 
-    redirect_to("/days", { :notice => "Day deleted successfully."} )
+    redirect_to("/this_week", { :notice => "Day deleted successfully."} )
   end
 end
